@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance BP Dashboard - Efficiency Engineering Center Cost Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; color: #333; padding: 20px; }
+        h1 { color: #007bff; text-align: center; margin-bottom: 40px; }
+        h2 { color: #0056b3; }
+        .card { margin-bottom: 30px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .chart-container { position: relative; height: 400px; width: 100%; }
+        .alert { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Finance BP Dashboard: Efficiency Engineering Center</h1>
+        <p class="lead text-center">From a Finance Business Partner perspective, this dashboard highlights key cost metrics, departmental breakdowns, expense distributions, and budget variances based on the provided data. Focus areas include cost efficiency, resource allocation, and variance analysis for strategic decision-making.</p>
+        
+        <!-- Key Metrics Summary -->
+        <h2>Key Financial Metrics</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Annual Cost</h5>
+                        <p class="card-text display-4">8,476,402 ¥</p>
+                        <p class="text-muted">Across all departments and expense types</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Human Resource Cost</h5>
+                        <p class="card-text display-4">7,419,200 ¥</p>
+                        <p class="text-muted">87.5% of total budget</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Average Monthly Cost per FT</h5>
+                        <p class="card-text display-4">44,148 ¥</p>
+                        <p class="text-muted">Based on 16 FTs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Department Cost Breakdown Chart -->
+        <h2>Department Cost Breakdown</h2>
+        <div class="card">
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="departmentCostChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Expense Type Distribution Chart -->
+        <h2>Expense Type Distribution</h2>
+        <div class="card">
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="expenseTypeChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Budget vs Actual Comparison (Template) -->
+        <h2>Budget vs Actual Comparison</h2>
+        <p class="alert alert-info">This section uses the provided template. Fill in actual amounts for variance calculation. As a Finance BP, monitor variances >10% for cost control recommendations.</p>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Expense Type</th>
+                    <th>Department</th>
+                    <th>Budget (¥)</th>
+                    <th>Actual (¥)</th>
+                    <th>Variance (¥)</th>
+                    <th>Variance %</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Human Cost</td>
+                    <td>HR Digitalization</td>
+                    <td>3,080,400</td>
+                    <td> <!-- Fill actual --> </td>
+                    <td> <!-- =Actual - Budget --> </td>
+                    <td> <!-- =Variance/Budget --> </td>
+                    <td> <!-- e.g., Personnel changes --> </td>
+                </tr>
+                <tr>
+                    <td>Human Cost</td>
+                    <td>Finance Digitalization</td>
+                    <td>1,643,400</td>
+                    <td> <!-- Fill actual --> </td>
+                    <td> <!-- =Actual - Budget --> </td>
+                    <td> <!-- =Variance/Budget --> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Human Cost</td>
+                    <td>Legal Digitalization</td>
+                    <td>1,477,400</td>
+                    <td> <!-- Fill actual --> </td>
+                    <td> <!-- =Actual - Budget --> </td>
+                    <td> <!-- =Variance/Budget --> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Human Cost</td>
+                    <td>Management</td>
+                    <td>1,218,000</td>
+                    <td> <!-- Fill actual --> </td>
+                    <td> <!-- =Actual - Budget --> </td>
+                    <td> <!-- =Variance/Budget --> </td>
+                    <td></td>
+                </tr>
+                <!-- Add similar rows for other expense types as in Table 4 -->
+                <tr>
+                    <td colspan="2"><strong>Total</strong></td>
+                    <td>8,476,602</td>
+                    <td> <!-- Sum actuals --> </td>
+                    <td> <!-- Total variance --> </td>
+                    <td> <!-- Total % --> </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Personnel Structure Summary -->
+        <h2>Personnel Structure & Cost Impact</h2>
+        <p class="alert alert-warning">As Finance BP, note high reliance on formal employees (50%) for stability, but monitor outsourcing costs (31.25%) for flexibility vs. risk.</p>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>Total FTs</th>
+                    <th>Formal (%)</th>
+                    <th>Outsourced (%)</th>
+                    <th>Intern (%)</th>
+                    <th>Total Cost (¥)</th>
+                    <th>Avg Cost per FT (¥)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HR Digitalization</td>
+                    <td>7</td>
+                    <td>42.9</td>
+                    <td>42.9</td>
+                    <td>14.3</td>
+                    <td>3,497,534</td>
+                    <td>499,648</td>
+                </tr>
+                <tr>
+                    <td>Finance Digitalization</td>
+                    <td>4</td>
+                    <td>50.0</td>
+                    <td>25.0</td>
+                    <td>25.0</td>
+                    <td>1,890,267</td>
+                    <td>472,567</td>
+                </tr>
+                <tr>
+                    <td>Legal Digitalization</td>
+                    <td>4</td>
+                    <td>50.0</td>
+                    <td>25.0</td>
+                    <td>25.0</td>
+                    <td>1,703,134</td>
+                    <td>425,784</td>
+                </tr>
+                <tr>
+                    <td>Management</td>
+                    <td>1</td>
+                    <td>100</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1,384,867</td>
+                    <td>1,384,867</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td>16</td>
+                    <td>50</td>
+                    <td>31.25</td>
+                    <td>18.75</td>
+                    <td>8,475,802</td>
+                    <td>529,738</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Insights Section -->
+        <h2>Finance BP Insights & Recommendations</h2>
+        <div class="alert alert-primary">
+            <ul>
+                <li><strong>Cost Concentration</strong>: Human costs dominate at 87.5%. Recommend optimizing staffing mix to reduce dependency.</li>
+                <li><strong>Departmental Imbalance</strong>: HR Digitalization consumes 41.3% of budget. Evaluate ROI and potential reallocations.</li>
+                <li><strong>Variance Monitoring</strong>: Use the budget table to track actuals. Aim for variances under 5% through quarterly reviews.</li>
+                <li><strong>Efficiency Opportunities</strong>: High per-FT costs in management suggest leadership overhead review.</li>
+                <li><strong>Risk Note</strong>: 31% outsourced staff – ensure contracts include cost escalation clauses.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Department Cost Chart (Pie Chart)
+        const deptCtx = document.getElementById('departmentCostChart').getContext('2d');
+        const deptChart = new Chart(deptCtx, {
+            type: 'pie',
+            data: {
+                labels: ['HR Digitalization', 'Finance Digitalization', 'Legal Digitalization', 'Management'],
+                datasets: [{
+                    data: [3498334, 1890267, 1703134, 1384867],
+                    backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: { display: true, text: 'Department Cost Distribution' }
+                }
+            }
+        });
+
+        // Expense Type Chart (Bar Chart)
+        const expenseCtx = document.getElementById('expenseTypeChart').getContext('2d');
+        const expenseChart = new Chart(expenseCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Human', 'Equipment', 'Software', 'Training', 'Other'],
+                datasets: [{
+                    label: 'Annual Cost (¥)',
+                    data: [7419200, 119002, 218000, 229200, 491000],
+                    backgroundColor: '#007bff'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                },
+                plugins: {
+                    title: { display: true, text: 'Expense Type Breakdown' }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 
